@@ -8,7 +8,7 @@ class SmurfForm extends React.Component {
     this.state = {
       name: '',
       age: 0,
-      height: 'cm'
+      height: 0
     }
 
   }
@@ -21,6 +21,7 @@ class SmurfForm extends React.Component {
     event.preventDefault();
     console.log('form submitted')
     this.addSmurf()
+    this.setState({ name: '', age: 0, height: 0 })
   }
 
   addSmurf = () => {
