@@ -25,6 +25,8 @@ function Smurf(props) {
         return (
           <div key={smurf.id}>
             <p>{smurf.name}</p>
+            <p>{smurf.age}</p>
+            <p>{smurf.height}</p>
           </div>
         )
       }) : <h2>Loading...</h2> }
