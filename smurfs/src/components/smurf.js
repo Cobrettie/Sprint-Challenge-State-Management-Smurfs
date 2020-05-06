@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import axios from 'axios';
 
-export default function Smurf() {
+function Smurf() {
 
   const [smurfs, editSmurfs] = useState([])
 
@@ -32,3 +33,5 @@ export default function Smurf() {
     </div>
   )
 }
+
+export default connect(null, {})(Smurf)
