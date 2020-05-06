@@ -21,14 +21,14 @@ export default function Smurf() {
     console.log('smurfs', smurfs),
     <div>
       Smurf component
-      {smurfs.map(smurf => {
+      {smurfs.length > 0 ? smurfs.map(smurf => {
         console.log('smurf map', smurf)
         return (
           <div key={smurf.id}>
             <p>{smurf.name}</p>
           </div>
         )
-      })}
+      }) : <h2>Loading...</h2> }
     </div>
   )
 }

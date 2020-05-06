@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+
 import Smurf from './smurf';
+import SmurfForm from './SmurfForm';
 import "./App.css";
 
 class App extends Component {
@@ -11,6 +13,7 @@ class App extends Component {
         <div>Start inside of your `src/index.js` file!</div>
         <div>Have fun!</div>
         <Smurf />
+        <SmurfForm />
       </div>
     );
   }
