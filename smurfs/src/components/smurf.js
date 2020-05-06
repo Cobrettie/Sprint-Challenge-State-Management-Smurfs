@@ -2,19 +2,23 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
+import { getData } from '../actions/getData';
+
 function Smurf(props) {
   console.log('smurf props', props)
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3333/smurfs')
-      .then(response => {
-        console.log(response)
-        // editSmurfs(response.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    // axios
+    //   .get('http://localhost:3333/smurfs')
+    //   .then(response => {
+    //     console.log(response)
+    //     // editSmurfs(response.data)
+    //   })
+    //   .catch(err => {
+    //     console.log(err)
+    //   })
+
+    props.getData()
   }, [])
 
   return (
@@ -24,9 +28,9 @@ function Smurf(props) {
         console.log('smurf map', smurf)
         return (
           <div key={smurf.id}>
-            <p>{smurf.name}</p>
-            <p>{smurf.age}</p>
-            <p>{smurf.height}</p>
+            <p>Name: {smurf.name}</p>
+            <p>Age: {smurf.age}</p>
+            <p>Height: {smurf.height}cm</p>
           </div>
         )
       }) : <h2>Loading...</h2> }
@@ -41,4 +45,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, {})(Smurf)
+export default connect(mapStateToProps, { getData })(Smurf)
