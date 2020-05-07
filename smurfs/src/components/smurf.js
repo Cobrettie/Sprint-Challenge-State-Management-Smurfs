@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 import { getData } from '../actions/getData';
+import { removeSmurf } from '../actions/removeSmurf';
 
 class Smurf extends React.Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class Smurf extends React.Component {
     this.props.getData()
   }
 
-  removeSmurf = (id) => {
-    axios.delete(`http://localhost:3333/smurfs/${id}`)
+  removeSmurfHandler = () => {
+    
   }
 
   render() {
@@ -28,7 +28,7 @@ class Smurf extends React.Component {
               <p>Name: {smurf.name}</p>
               <p>Age: {smurf.age}</p>
               <p>Height: {smurf.height}cm</p>
-              {/* <button onClick={this.removeSmurf(smurf.id)}>Remove Smurf</button> */}
+              <button onClick={removeSmurf(smurf.id)}>Remove Smurf</button>
             </div>
           )
         }) : <h2>Loading...</h2> }
@@ -40,8 +40,10 @@ class Smurf extends React.Component {
 const mapStateToProps = state => {
   console.log('smurf.js mSTP', state)
   return {
-    smurfs: state.smurfs
+    isFetching: state.isFetching,
+    smurfs: state.smurfs,
+    error: state.error
   }
 }
 
-export default connect(mapStateToProps, { getData })(Smurf)
+export default connect(mapStateToProps, { getData, removeSmurf })(Smurf)
