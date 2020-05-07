@@ -36,7 +36,7 @@ class SmurfForm extends React.Component {
   }
 
   render() {
-    console.log('state', this.state)
+    console.log('state, props', this.state, this.props)
     return (
       <div>
       <form onSubmit={this.handleSubmit}>

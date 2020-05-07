@@ -1,3 +1,5 @@
+import { FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_DATA_FAIL } from "../actions/getData"
+
 const initialState = {
   smurfs: [
     {
@@ -6,9 +8,34 @@ const initialState = {
       age: 200,
       height: 5
     }
-  ]
+  ],
+  isFetching: false,
+  error: ''
 }
 
 export default function reducer(state = initialState, action) {
-  return state
+  switch(action.type) {
+    case FETCH_DATA_START:
+      return {
+        ...state,
+        isFetching: true,
+        error: ''
+      }
+
+      case FETCH_DATA_SUCCESS:
+        return {
+          ...state,
+          smurf: action.payload,
+          isFetching: false,
+          error: ''
+        }
+
+      case FETCH_DATA_FAIL:
+        return {
+          error: action.payload
+        }
+
+    default:
+      return state
+  }
 }
