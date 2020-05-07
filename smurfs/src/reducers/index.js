@@ -1,4 +1,5 @@
 import { FETCH_DATA_START, FETCH_DATA_SUCCESS, FETCH_DATA_FAIL } from "../actions/getData"
+import { ADD_SMURF } from '../actions/addSmurf';
 
 const initialState = {
   smurfs: [
@@ -25,7 +26,7 @@ export default function reducer(state = initialState, action) {
       case FETCH_DATA_SUCCESS:
         return {
           ...state,
-          smurf: action.payload,
+          smurfs: action.payload,
           isFetching: false,
           error: ''
         }
@@ -34,6 +35,12 @@ export default function reducer(state = initialState, action) {
         return {
           error: action.payload
         }
+
+      case ADD_SMURF:
+      return {
+        ...state,
+        smurfs: [...state.smurfs, action.payload]
+      }
 
     default:
       return state

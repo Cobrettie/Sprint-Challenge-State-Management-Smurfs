@@ -10,7 +10,7 @@ export const getData = () => {
     axios.get('http://localhost:3333/smurfs')
       .then(response => {
         console.log('getData GET request', response)
-        dispatch({ type: FETCH_DATA_SUCCESS, payload: response })
+        dispatch({ type: FETCH_DATA_SUCCESS, payload: response.data })
       })
       .catch(err => {
         dispatch({ type: FETCH_DATA_FAIL, payload: err })
