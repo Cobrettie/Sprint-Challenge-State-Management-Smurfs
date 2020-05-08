@@ -13,10 +13,10 @@ class Smurf extends React.Component {
     this.props.getData()
   }
 
-  removeSmurfHandler = () => {
+  // removeSmurfHandler = () => {
     
-  }
-
+  // }
+  
   render() {
   console.log('smurf props', this.props)
     return (
